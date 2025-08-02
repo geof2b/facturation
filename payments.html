@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CESAD Facturation - Paiements</title>
+    <link rel="stylesheet" href="css/payments.css">
+    <link rel="stylesheet" href="css/commun.css">
+
+</head>
+
+<body>
+    <div id="app-container">
+        <nav id="topbar">
+            <div class="topbar-logo">
+                <div id="server-status-light"></div>
+                <span style="margin:0px 60px 0px 30px">CESAD</span>
+            </div>
+            <ul>
+                <li><a href="dashboard.html" class="nav-link">📊 Tableau de Bord</a></li>
+                <li><a href="invoicing.html" class="nav-link">🧾 Facturation</a></li>
+                <li><a href="history.html" class="nav-link">🗂️ Historique</a></li>
+                <li><a href="nurses.html" class="nav-link">👩‍⚕️ Infirmières</a></li>
+                <li><a href="payments.html" class="nav-link">💳 Suivi Paiements</a></li>
+            </ul>
+        </nav>
+        <main id="main-content">
+            <div id="payments" class="view">
+                <div class="view-header">
+                    <h1>Suivi des Paiements</h1>
+                </div>
+                <div class="import-section">
+                    <h4>Importer le fichier de la banque (CSV)</h4>
+                    <p>Importez ici votre relevé de compte pour lier les paiements entrants aux factures des
+                        infirmières.</p>
+                    <div class="import-controls">
+                        <input type="file" id="bank-file-input" accept=".csv" style="display: none;">
+                        <button id="import-bank-btn">📤 Importer un Relevé</button>
+                    </div>
+                </div>
+                <div class="payment-section">
+                    <div class="payment-section-header">
+                        <h2>Rapprochement des paiements</h2>
+                        <div class="header-actions">
+                            <button id="remove-duplicates-btn">Enlever duplicata<span class="notification-badge"
+                                    id="duplicates-badge"></span></button>
+
+
+<div class="controls" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+    <div class="filter-group">
+        <input type="checkbox" id="filter-positive" checked>
+        <label for="filter-positive">Paiements reçus (+)</label>
+    </div>
+    <div class="filter-group">
+        <input type="checkbox" id="filter-negative" checked>
+        <label for="filter-negative">Paiements effectués (-)</label>
+    </div>
+    
+    <div style="border-left: 1px solid #ccc; height: 25px;"></div>
+
+    <div class="filter-group">
+        <input type="checkbox" id="filter-matched" checked>
+        <label for="filter-matched">Rapprochés</label>
+    </div>
+    <div class="filter-group">
+        <input type="checkbox" id="filter-unmatched" checked>
+        <label for="filter-unmatched">Non-rapprochés</label>
+    </div>
+    <div class="filter-group">
+        <input type="checkbox" id="filter-ignored" checked>
+        <label for="filter-ignored">Ignorés</label> </div>
+</div>
+
+
+
+
+
+
+                            <button id="redo-matching-btn">Refaire rapprochement<span class="notification-badge"
+                                    id="matching-badge"></span></button>
+                            <button id="ignore-all-btn">Ignorer tous ces paiements</button>
+                        </div>
+                    </div>
+                    <div id="payment-matching-area">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/import.js"></script>
+    <script src="js/payments.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

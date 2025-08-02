@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CESAD Facturation - Facturation</title>
+    <link rel="stylesheet" href="css/invoicing.css">
+    <link rel="stylesheet" href="css/commun.css">
+</head>
+
+<body>
+    <div id="app-container">
+        <nav id="topbar">
+            <div class="topbar-logo">
+                <div id="server-status-light"></div>
+                <span style="margin:0px 60px 0px 30px">CESAD</span>
+            </div>
+            <ul>
+                <li><a href="dashboard.html" class="nav-link">📊 Tableau de Bord</a></li>
+                <li><a href="invoicing.html" class="nav-link">🧾 Facturation</a></li>
+                <li><a href="history.html" class="nav-link">🗂️ Historique</a></li>
+                <li><a href="nurses.html" class="nav-link">👩‍⚕️ Infirmières</a></li>
+                <li><a href="payments.html" class="nav-link">💳 Suivi Paiements</a></li>
+            </ul>
+        </nav>
+
+        <main id="main-content">
+            <div id="invoicing" class="view">
+                <div class="view-header">
+                    <div class="header-left">
+                        <h1>Facturation mensuelle</h1>
+                        <div class="month-selector-group">
+                            <button id="change-month-btn">Sélectionner un mois</button>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <span id="data-range-display" class="data-info"
+                            style="font-style: italic; font-size: 13px;"></span>
+                        <button id="import-medionline-btn" class="import-header-btn" style="margin-left: 10px;">📤
+                            Importer
+                            données</button>
+                        <input type="file" id="medionline-file-input" accept=".csv,.tsv" style="display: none;">
+                    </div>
+                </div>
+
+                <div id="invoicing-layout-container">
+                    <div id="invoicing-main-column">
+                        <div id="invoice-preview-area"></div>
+                    </div>
+
+                    <div id="invoicing-nurse-column">
+                        <div id="invoice-nurse-list-area"></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </main>
+    </div>
+
+    <div id="calendar-modal" class="modal">
+        <div class="modal-content calendar-modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="calendar-header">
+                <button id="prev-year-btn" class="calendar-nav-btn">&#9664;</button>
+                <span id="calendar-year-display">2025</span>
+                <button id="next-year-btn" class="calendar-nav-btn">&#9654;</button>
+            </div>
+            <div id="calendar-grid"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="js/db.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/import.js"></script>
+    <script src="js/invoicing.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

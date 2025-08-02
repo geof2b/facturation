@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CESAD Facturation - Historique</title>
+    <link rel="stylesheet" href="css/history.css">
+    <link rel="stylesheet" href="css/commun.css">
+
+</head>
+
+<body>
+    <div id="app-container">
+        <nav id="topbar">
+            <div class="topbar-logo">
+                <div id="server-status-light"></div>
+                <span style="margin:0px 60px 0px 30px">CESAD</span>
+            </div>
+            <ul>
+                <li><a href="dashboard.html" class="nav-link" data-view="dashboard">📊 Tableau de Bord</a></li>
+                <li><a href="invoicing.html" class="nav-link" data-view="invoicing">🧾 Facturation</a></li>
+                <li><a href="history.html" class="nav-link" data-view="history">🗂️ Historique</a></li>
+                <li><a href="nurses.html" class="nav-link" data-view="nurses">👩‍⚕️ Infirmières</a></li>
+                <li><a href="payments.html" class="nav-link" data-view="payments">💳 Suivi Paiements</a></li>
+            </ul>
+        </nav>
+        <main id="main-content">
+            <div id="history" class="view">
+                <h1>Suivi des Factures</h1>
+                <div id="verification-status" style="margin-bottom: 20px;"></div>
+
+                <div class="controls">
+                    <div class="filter-group">
+                        <label>Filtrer par mois</label>
+                        <button id="history-month-selector-btn" class="month-selector-display"><span>Tous les
+                                mois</span></button>
+                        <input type="hidden" id="history-filter-month">
+                    </div>
+                    <div class="filter-group">
+                        <label for="history-filter-nurse">Filtrer par infirmière</label>
+                        <select id="history-filter-nurse">
+                            <option value="all">Toutes les infirmières</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="history-filter-status">Filtrer par statut</label>
+                        <select id="history-filter-status">
+                            <option value="all">Tous</option>
+                            <option value="facture">Facturé</option>
+                            <option value="a-facturer">À facturer</option>
+                        </select>
+                    </div>
+                    <div class="filter-group checkbox-group">
+                        <label for="history-filter-bank">Paiements</label>
+                        <input type="checkbox" id="history-filter-bank">
+                    </div>
+                    <button class="reset-filters" id="reset-history-filters">Réinitialiser</button>
+                    <button id="add-manual-invoice-btn">Ajouter Facture</button>
+                </div>
+                <div class="history-section" id="history-list-section">
+                    <div id="history-list-area"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="calendar-modal" class="modal">
+        <div class="modal-content calendar-modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="calendar-header">
+                <button id="prev-year-btn" class="calendar-nav-btn">&#9664;</button>
+                <span id="calendar-year-display">2025</span>
+                <button id="next-year-btn" class="calendar-nav-btn">&#9654;</button>
+            </div>
+            <div id="calendar-grid"></div>
+        </div>
+    </div>
+
+    <div id="manual-invoice-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="manual-invoice-title">Ajouter une Facture Manuelle</h2>
+            <form id="manual-invoice-form">
+                <label for="manual-invoice-nurse">Infirmière :</label>
+                <select id="manual-invoice-nurse" required></select>
+                <label for="manual-invoice-date">Date d'émission :</label>
+                <input type="date" id="manual-invoice-date" required>
+                <label for="manual-invoice-period">Mois de Paiement :</label>
+                <input type="month" id="manual-invoice-period" required>
+                <label for="manual-invoice-label">Libellé :</label>
+                <input type="text" id="manual-invoice-label" value="Facture manuelle" required>
+                <label for="manual-invoice-amount">Montant Dû (CHF) :</label>
+                <input type="number" step="0.05" id="manual-invoice-amount" required>
+
+                <div class="modal-form-actions">
+                    <button type="submit">Sauvegarder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

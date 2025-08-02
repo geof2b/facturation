@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CESAD Facturation - Paramètres</title>
+    <link rel="stylesheet" href="css/settings.css">    <link rel="stylesheet" href="css/commun.css">
+
+</head>
+
+<body>
+    <div id="app-container">
+        <nav id="topbar">
+<div class="topbar-logo">
+                <div id="server-status-light"></div>
+                <span style="margin:0px 60px 0px 30px">CESAD</span>
+            </div>            <ul>
+                <li><a href="dashboard.html" class="nav-link" data-view="dashboard">📊 Tableau de Bord</a></li>
+                <li><a href="invoicing.html" class="nav-link" data-view="invoicing">🧾 Facturation</a></li>
+                <li><a href="history.html" class="nav-link" data-view="history">🗂️ Historique</a></li>
+                <li><a href="nurses.html" class="nav-link" data-view="nurses">👩‍⚕️ Infirmières</a></li>
+                <li><a href="payments.html" class="nav-link" data-view="payments">💳 Suivi Paiements</a></li>
+                <li><a href="settings.html" class="nav-link" data-view="settings">⚙️ Paramètres</a></li>
+            </ul>
+        </nav>
+        <main id="main-content">
+            <div id="settings" class="view">
+                <h1>Paramètres</h1>
+                <div class="settings-section">
+                    <h3>Bonus Trimestriel</h3>
+                    <div id="bonus-tiers-settings"></div>
+                    <p>La gestion des données est maintenant automatique via le serveur.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/db.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

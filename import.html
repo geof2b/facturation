@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CESAD Facturation - Import</title>
+    <link rel="stylesheet" href="css/import.css">
+    <link rel="stylesheet" href="css/commun.css">
+
+</head>
+
+<body>
+    <div id="app-container">
+        <nav id="topbar">
+            <div class="topbar-logo">
+                <div id="server-status-light"></div>
+                <span style="margin:0px 60px 0px 30px">CESAD</span>
+            </div>
+            <ul>
+                <li><a href="dashboard.html" class="nav-link">📊 Tableau de Bord</a></li>
+                <li><a href="invoicing.html" class="nav-link">🧾 Facturation</a></li>
+                <li><a href="history.html" class="nav-link">🗂️ Historique</a></li>
+                <li><a href="nurses.html" class="nav-link">👩‍⚕️ Infirmières</a></li>
+                <li><a href="payments.html" class="nav-link">💳 Suivi Paiements</a></li>
+                <li><a href="import.html" class="nav-link">📤 Import Données</a></li>
+            </ul>
+        </nav>
+        <main id="main-content">
+            <div id="import" class="view">
+                <div class="view-header">
+                    <h1>Importer les Fichiers</h1>
+                </div>
+                <div class="import-section">
+                    <h4>Importer Fichier "Medionline" (CSV/TSV)</h4>
+                    <input type="file" id="medionline-file-input" accept=".csv,.tsv">
+                    <button id="import-medionline-btn">Importer Transactions</button>
+                </div>
+                <div class="import-section">
+                    <h4>Importer Fichier "Liste Infirmières" (CSV)</h4>
+                    <input type="file" id="nurses-file-input" accept=".csv">
+                    <button id="import-nurses-btn">Importer Infirmières</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/import.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

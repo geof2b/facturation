@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CESAD Facturation - Tableau de Bord</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/commun.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div id="app-container">
+        <nav id="topbar">
+            <div class="topbar-logo">
+                <div id="server-status-light"></div>
+                <span style="margin:0px 60px 0px 30px">CESAD</span>
+            </div>
+            <ul>
+                <li><a href="dashboard.html" class="nav-link active">📊 Tableau de Bord</a></li>
+                <li><a href="invoicing.html" class="nav-link">🧾 Facturation</a></li>
+                <li><a href="history.html" class="nav-link">🗂️ Historique</a></li>
+                <li><a href="nurses.html" class="nav-link">👩‍⚕️ Infirmières</a></li>
+                <li><a href="payments.html" class="nav-link">💳 Suivi Paiements</a></li>
+            </ul>
+        </nav>
+        <main id="main-content">
+            <div id="dashboard" class="view">
+                <div id="dashboard-layout">
+                    <div id="info-panel">
+                        <h2 style="margin-top: 10px;">Informations Clés</h2>
+
+                        <div class="info-card">
+                            <h3>Prochaine Facturation</h3>
+                            <p id="next-invoicing-month">Calcul en cours...</p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3 style="color: red;">Infirmières à compléter</h3>
+                            <div id="missing-nurse-info">Calcul en cours...</div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3 style="color: darkgrey;">Périodes des Données</h3>
+                            <p><strong>Transactions (Medionline):</strong><br><span id="transaction-data-range">Aucune
+                                    donnée</span></p>
+                            <p><strong>Paiements (Banque):</strong><br><span id="bank-data-range">Aucune donnée</span>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div id="chart-panel">
+                        <div class="view-header">
+                            <h1>Commissions sur 12 mois</h1>
+                            <div class="header-right">
+                                <div class="year-navigator">
+                                    <button id="prev-month-btn" class="calendar-nav-btn">&#9664;</button>
+                                    <span id="chart-month-display">Juillet 2025</span>
+                                    <button id="next-month-btn" class="calendar-nav-btn">&#9654;</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="commissionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
