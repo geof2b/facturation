@@ -1,0 +1,280 @@
+/* Styles de base de l'application */
+:root {
+  --primary-color: #005a9c;
+  --secondary-color: #d4d4d4;
+  --border-color: #ddd;
+  --font-color: #333;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+body {
+  color: var(--font-color);
+  background-color: #f4f4f9;
+}
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#topbar {
+  flex-shrink: 0;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#main-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+.view-header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  position: relative; /* Nécessaire pour le positionnement du badge */
+}
+button:hover {
+  opacity: 0.9;
+}
+input,
+textarea,
+select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  font-size: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+.topbar-logo {
+  display: flex;
+  align-items: center;
+}
+.topbar-logo span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#topbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 30px;
+  display: flex;
+}
+#topbar ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 18px 15px;
+  transition: background-color 0.3s;
+}
+#topbar ul li a:hover,
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.import-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+.import-section h4 {
+  margin-top: 0;
+}
+.import-section .import-controls {
+  display: flex;
+  gap: 10px;
+}
+
+#import-bank-btn {
+  background-color: #555;
+  font-size: 0.9em;
+  padding: 9px 12px;
+}
+
+/* --- Styles pour la page Paiements --- */
+.payment-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+}
+.payment-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+}
+.payment-section-header h2 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.payment-section-header .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#ignore-all-btn {
+    background-color: #dc3545;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-group label {
+  font-size: 0.9em;
+  font-weight: normal;
+  cursor: pointer;
+}
+.filter-group input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+#payment-matching-area table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+#payment-matching-area th,
+#payment-matching-area td {
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+#payment-matching-area th {
+  background-color: #f8f9fa;
+}
+#payment-matching-area td.amount {
+  text-align: right;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.1em;
+}
+#payment-matching-area tr:last-child td {
+  border-bottom: none;
+}
+.nurse-matcher-select {
+  width: 100%;
+  max-width: 250px;
+}
+.info-message {
+  text-align: center;
+  color: #666;
+  padding: 40px 0;
+}
+
+.nurse-matcher-select.unassigned {
+  background-color: #fff3cd; /* Jaune clair */
+  border-color: #ffc107;
+  font-weight: bold;
+}
+
+.nurse-matcher-select.select-matched {
+  background-color: #d4edda; /* Vert clair */
+  border-color: #c3e6cb;
+}
+.nurse-matcher-select.select-ignored {
+    background-color: #f8d7da; /* Rouge clair */
+    border-color: #f5c6cb;
+}
+
+.nurse-matcher-select.select-debit {
+    background-color: #ffeeba; /* Orange clair */
+    border-color: #ffdf7e;
+}
+
+/* --- Style pour les badges de notification --- */
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 6px;
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 12px;
+    text-align: center;
+    line-height: 1.2;
+    display: none; /* Caché par défaut */
+}
+
+.notification-badge:not(:empty) {
+    display: inline-block; /* Affiché seulement s'il a du contenu */
+}
+
+    /* Styles pour les filtres */
+    .controls .filter-group { display: flex; align-items: center; gap: 8px; }
+    .controls .filter-group input[type="checkbox"] { width: auto; height: 18px; }

@@ -1,0 +1,555 @@
+/* Styles de base de l'application */
+:root {
+  --primary-color: #005a9c;
+  --secondary-color: #d4d4d4;
+  --border-color: #ddd;
+  --font-color: #333;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+body {
+  color: var(--font-color);
+  background-color: #f4f4f9;
+}
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#topbar {
+  flex-shrink: 0;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#main-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+.view-header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+button:hover {
+  opacity: 0.9;
+}
+input,
+textarea,
+select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  font-size: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+.topbar-logo {
+  display: flex;
+  align-items: center;
+}
+.topbar-logo span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#topbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 30px;
+  display: flex;
+}
+#topbar ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 18px 15px;
+  transition: background-color 0.3s;
+}
+#topbar ul li a:hover,
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+/* =================================================================== */
+/* 2. MISE EN PAGE SPÉCIFIQUE À LA FACTURATION                         */
+/* =================================================================== */
+
+.view-header .header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+}
+.month-selector-group {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+#change-month-btn {
+  font-size: 1em;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  font-weight: normal;
+}
+#change-month-btn:hover {
+  border-color: #888;
+  opacity: 1;
+}
+
+#invoicing-layout-container {
+  flex-grow: 1;
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}
+#invoicing-main-column,
+#invoicing-nurse-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#invoicing-main-column {
+  flex: 1;
+}
+#invoicing-nurse-column {
+  flex-basis: 420px;
+  flex-shrink: 0;
+}
+#invoice-preview-area,
+#invoice-nurse-list-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+.no-margin-top {
+  margin-top: 0;
+}
+.invoice-nurse-list-header {
+  display: flex;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.invoice-nurse-list-header .name {
+  flex: 1;
+  font-size: 1.1em;
+}
+.invoice-nurse-list-header .amount {
+  flex-basis: 100px;
+  text-align: right;
+}
+.invoice-nurse-list-header .action-container {
+  flex-basis: 110px;
+  text-align: center;
+}
+.nurse-list-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  gap: 10px;
+}
+.nurse-list-item:hover {
+  background-color: #f0f8ff;
+}
+/* CORRECTION : Style pour l'infirmière sélectionnée */
+.nurse-list-item.selected {
+  background-color: #B1CEEC; /* Un bleu clair */
+  font-weight: bold;
+}
+
+.nurse-list-item .name {
+  flex: 1;
+  margin-left: 8px;
+}
+.nurse-list-item .amount {
+  flex-basis: 100px;
+  text-align: right;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+.nurse-list-item .action-container {
+  flex-basis: 110px;
+  text-align: center;
+}
+.nurse-action-button {
+  font-size: 0.8em;
+  padding: 8px 10px;
+  width: 100px;
+  text-align: center;
+}
+.nurse-action-button.modify-btn {
+  background-color: #ffc107;
+  color: #333;
+}
+.nurse-action-button.pdf-btn {
+  background-color: #dc3545;
+}
+#print-all-invoices-btn {
+  font-size: 0.8em;
+  padding: 7px 8px;
+  margin-left: 5px;
+  background-color: #28a745;
+}
+.nurse-status-text {
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: bold;
+  color: #28a745;
+}
+.nurse-list-total {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid var(--primary-color);
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.nurse-list-total .name {
+  flex: 1;
+}
+.nurse-list-total .amount {
+  flex-basis: 100px;
+  text-align: right;
+}
+.nurse-list-total .action-container {
+  flex-basis: 110px;
+  display: flex;
+  justify-content: center;
+}
+.initial-message {
+  color: #555;
+  text-align: center;
+  padding-top: 50px;
+}
+#invoice-preview-area table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: none;
+  table-layout: fixed;
+}
+#invoice-preview-area th,
+#invoice-preview-area td {
+  border: 1px solid var(--border-color);
+  padding: 8px 8px;
+  text-align: left;
+  vertical-align: middle;
+  word-wrap: break-word;
+  font-size: 0.9em;
+}
+#invoice-preview-area th {
+  background-color: var(--secondary-color);
+  line-height: 1.2;
+}
+#invoice-preview-area th:nth-child(1),
+#invoice-preview-area td:nth-child(1) {
+  width: 3%;
+}
+#invoice-preview-area th:nth-child(2),
+#invoice-preview-area td:nth-child(2) {
+  width: 10%;
+}
+#invoice-preview-area th:nth-child(3),
+#invoice-preview-area td:nth-child(3) {
+  width: 25%;
+}
+#invoice-preview-area th:nth-child(4),
+#invoice-preview-area td:nth-child(4) {
+  width: 7%;
+  text-align: center;
+}
+#invoice-preview-area th:nth-child(5),
+#invoice-preview-area td:nth-child(5) {
+  width: 15%;
+  text-align: right;
+}
+#invoice-preview-area th:nth-child(6),
+#invoice-preview-area td:nth-child(6) {
+  width: 9%;
+  text-align: center;
+}
+#invoice-preview-area th:nth-child(7),
+#invoice-preview-area td:nth-child(7) {
+  width: 15%;
+  text-align: right;
+}
+#invoice-preview-area .patient-cell {
+  font-size: 0.8em;
+}
+#invoice-preview-area .commission-percent-cell {
+  text-align: center;
+}
+#invoice-preview-area tfoot td {
+  font-weight: bold;
+  background-color: #b1ceec;
+}
+#invoice-preview-area tfoot .total-label {
+  text-align: right;
+}
+#invoice-preview-area tfoot .total-value {
+  font-size: 1.1em;
+  color: var(--primary-color);
+}
+#invoice-preview-area tfoot .commission-rate-input {
+  padding: 4px;
+  width: 45px;
+  text-align: right;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.total-due-input {
+  padding: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: right;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--primary-color);
+}
+.total-due-input:focus {
+  background-color: white;
+  border-color: var(--primary-color);
+}
+.total-due-input.manual {
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.invoice-actions {
+  text-align: right;
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.invoice-actions .nurse-action-button {
+  font-size: 0.9em;
+  width: auto;
+  padding: 8px 15px;
+}
+
+.debit-patient-same {
+  color: #dc3545;
+  background-color: #fbe9e7;
+}
+
+#invoice-print-template {
+  display: none;
+}
+@media print {
+  #app-container,
+  .modal {
+    display: none !important;
+  }
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+  #invoice-print-template {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+  }
+  .invoice-container {
+    margin: 0;
+    padding: 20px;
+    border: none;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .invoice-container:last-child {
+    page-break-after: auto;
+  }
+}
+
+/* =================================================================== */
+/* STYLES AMÉLIORÉS POUR LE CALENDRIER MODAL                           */
+/* =================================================================== */
+
+.modal-content.calendar-modal-content {
+  width: 320px !important;
+  max-width: 90vw;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 45px 25px 25px 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+#calendar-year-display {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--primary-color);
+  flex-grow: 1;
+  text-align: center;
+}
+
+.calendar-nav-btn {
+  background: none;
+  border: 1px solid transparent;
+  font-size: 1.8em;
+  color: var(--primary-color);
+  padding: 0 10px;
+  border-radius: 50%;
+  height: 40px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.calendar-nav-btn:hover {
+  color: rgb(50, 83, 154);
+  transform: scale(1.5);
+}
+
+#calendar-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 12px !important;
+}
+
+#calendar-grid .calendar-month {
+  padding: 18px 10px !important;
+  text-align: center !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: default !important;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.calendar-month:not(.enabled) {
+  background: #e9ecef !important;
+  color: #adb5bd !important;
+  cursor: not-allowed;
+}
+
+.calendar-month.enabled {
+  background: #ffffff !important;
+  color: #495057 !important;
+  border: 1px solid #dee2e6;
+  cursor: pointer !important;
+}
+
+.calendar-month.enabled:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-color: var(--primary-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.import-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+.import-header-btn {
+  background-color: #555;
+  font-size: 0.9em;
+  padding: 8px 12px;
+}
+
+/* Style pour les mois entièrement validés */
+.calendar-month.month-validated {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  border-color: #c3e6cb !important;
+}

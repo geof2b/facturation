@@ -1,0 +1,534 @@
+/* Styles de base de l'application */
+:root {
+  --primary-color: #005a9c;
+  --secondary-color: #d4d4d4;
+  --border-color: #ddd;
+  --font-color: #333;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+body {
+  color: var(--font-color);
+  background-color: #f4f4f9;
+}
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#topbar {
+  flex-shrink: 0;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#main-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+.view-header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+button:hover {
+  opacity: 0.9;
+}
+input,
+textarea,
+select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  font-size: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+.topbar-logo {
+  display: flex;
+  align-items: center;
+}
+.topbar-logo span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#topbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 30px;
+  display: flex;
+}
+#topbar ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 18px 15px;
+  transition: background-color 0.3s;
+}
+#topbar ul li a:hover,
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.import-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+.import-header-btn {
+  background-color: #17a2b8;
+  font-size: 0.9em;
+  padding: 8px 12px;
+}
+
+/* --- Styles spécifiques pour la page Historique --- */
+
+#history {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filter-group label {
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #555;
+}
+
+.controls button {
+  background-color: #6c757d;
+  height: 40px;
+}
+
+.history-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.filter-group.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.filter-group.checkbox-group label {
+  order: 2;
+}
+.filter-group.checkbox-group input {
+  width: auto;
+  height: 18px;
+  order: 1;
+  margin-top: 15px;
+}
+
+/* Tables */
+#history-list-area {
+  padding: 0;
+}
+
+.history-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-section th,
+.history-section td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.history-section tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.history-section th {
+  background-color: #f8f9fa;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #333;
+}
+
+.history-section tfoot td {
+  font-weight: bold;
+  background-color: #e9ecef;
+  border-top: 2px solid #ccc;
+}
+
+.history-section tbody tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* Alignement des colonnes */
+/* CORRECTION : Ajustement des largeurs de colonnes */
+#history-list-area th:nth-child(4) {
+  text-align: center;
+}
+#history-list-area td:nth-child(4),
+#history-list-area tfoot td:nth-child(2) {
+  text-align: right;
+}
+#history-list-area th:nth-child(5),
+#history-list-area td:nth-child(5) {
+  width: 120px; /* Largeur réduite pour Statut */
+  text-align: center;
+}
+#history-list-area th:last-child,
+#history-list-area td:last-child {
+  text-align: center;
+}
+
+#history-list-area td:nth-child(4),
+#history-list-area tfoot td {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.1em;
+}
+
+/* Style des statuts */
+.status {
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.status-facture {
+  background-color: #d4edda;
+  color: #155724;
+}
+.status-a-facturer {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.status-paiement {
+  background-color: #cfe2ff;
+  color: #084298;
+}
+
+/* En-têtes de colonnes triables */
+.sortable {
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.sortable:hover {
+  background-color: #e9ecef;
+}
+.sortable.sorted {
+  font-weight: bold;
+  color: #000;
+}
+.sortable::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+}
+.sortable.sort-asc::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z'/%3E%3C/svg%3E");
+}
+.sortable.sort-desc::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z'/%3E%3C/svg%3E");
+}
+
+/* --- Styles pour le Calendrier Modal --- */
+.month-selector-display {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff !important;
+  min-width: 220px;
+  font-size: 1em;
+  text-align: left;
+  cursor: pointer;
+  color: #333;
+  transition: border-color 0.2s;
+}
+.month-selector-display:hover {
+  border-color: #888;
+}
+.month-selector-display span {
+  font-family: Arial, sans-serif;
+}
+
+.modal-content.calendar-modal-content {
+  width: 320px !important;
+  max-width: 90vw;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 45px 25px 25px 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+#calendar-year-display {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--primary-color);
+  flex-grow: 1;
+  text-align: center;
+}
+.calendar-nav-btn {
+  background: none;
+  border: 1px solid transparent;
+  font-size: 1.8em;
+  color: var(--primary-color);
+  padding: 0 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  transition: all 0.2s;
+}
+.calendar-nav-btn:hover {
+  color: rgb(50, 83, 154);
+  transform: scale(1.5);
+}
+#calendar-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 12px !important;
+}
+#calendar-grid .calendar-month {
+  padding: 18px 10px !important;
+  text-align: center !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: default !important;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+}
+.calendar-month:not(.enabled) {
+  background: #e9ecef !important;
+  color: #adb5bd !important;
+  cursor: not-allowed;
+}
+.calendar-month.enabled {
+  background: #ffffff !important;
+  color: #495057 !important;
+  border: 1px solid #dee2e6;
+  cursor: pointer !important;
+}
+.calendar-month.enabled:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-color: var(--primary-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les mois entièrement validés */
+.calendar-month.month-validated {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  border-color: #c3e6cb !important;
+}
+
+/* NOUVEAU : Styles pour le Modal de Facture Manuelle */
+#manual-invoice-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px 20px;
+  align-items: center;
+}
+#manual-invoice-form label {
+  font-weight: bold;
+  color: #555;
+  text-align: right;
+}
+#manual-invoice-form button[type="submit"] {
+  grid-column: 2 / 3;
+  justify-self: end;
+  width: 200px;
+  margin-top: 10px;
+}
+
+/* NOUVEAU : Styles pour les boutons d'action dans la table */
+.action-buttons {
+  display: flex;
+  gap: 5px; /* Ajoute un petit espace entre les boutons */
+  justify-content: center;
+}
+
+.annuler-btn {
+  background-color: #dc3545; /* Rouge pour indiquer une action destructive */
+}
+
+/* ... (tout votre code CSS existant jusqu'à la fin) ... */
+
+/* Styles pour le Modal de Facture Manuelle */
+#manual-invoice-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px 20px;
+  align-items: center;
+}
+#manual-invoice-form label {
+  font-weight: bold;
+  color: #555;
+  text-align: right;
+}
+#manual-invoice-form button[type="submit"] {
+  grid-column: 2 / 3;
+  justify-self: end;
+  width: 200px;
+  margin-top: 10px;
+}
+
+/* Styles pour le Modal de Facture Manuelle */
+#manual-invoice-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px 20px;
+  align-items: center;
+}
+#manual-invoice-form label {
+  font-weight: bold;
+  color: #555;
+  text-align: right;
+}
+
+/* CORRECTION : Conteneur pour aligner les boutons */
+.modal-form-actions {
+  grid-column: 1 / -1; /* Prend toute la largeur */
+  display: flex;
+  justify-content: space-between; /* Espace les boutons */
+  margin-top: 10px;
+}
+.modal-form-actions button {
+  width: auto;
+  padding: 10px 20px;
+}
+#delete-manual-invoice-btn {
+  background-color: #dc3545; /* Rouge */
+}
+
+.reset-filters {
+  background-color: #333 !important;
+}
+
+/* Styles pour la barre de vérification */
+#verification-status {
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95em;
+  text-align: center;
+  border: 1px solid transparent;
+}
+.verification-ok {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+  display: block;
+}
+.verification-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeeba;
+  display: block;
+}

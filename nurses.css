@@ -1,0 +1,367 @@
+/* Styles de base de l'application */
+:root {
+  --primary-color: #005a9c;
+  --secondary-color: #d4d4d4;
+  --border-color: #ddd;
+  --font-color: #333;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+body {
+  color: var(--font-color);
+  background-color: #f4f4f9;
+}
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#topbar {
+  flex-shrink: 0;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#main-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+.view-header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+button:hover {
+  opacity: 0.9;
+}
+input,
+textarea,
+select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  font-size: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+.topbar-logo {
+  display: flex;
+  align-items: center;
+}
+.topbar-logo span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#topbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 30px;
+  display: flex;
+}
+#topbar ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 18px 15px;
+  transition: background-color 0.3s;
+}
+#topbar ul li a:hover,
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px 30px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.close-btn {
+  color: #7a7a7a;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.import-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+.import-header-btn {
+  background-color: #555;
+  font-size: 0.9em;
+  padding: 8px 12px;
+}
+
+/* --- Styles pour la page Infirmières --- */
+
+#nurses .view-header .header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+#toggle-archived-btn {
+  background-color: #ffc107; /* Gris neutre */
+  color: black;
+}
+
+#nurses-list {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#nurses-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#nurses-list th {
+  background-color: var(--secondary-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#nurses-list th,
+#nurses-list td {
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#nurses-list th:nth-child(1),
+#nurses-list td:nth-child(1),
+#nurses-list th:nth-child(2),
+#nurses-list td:nth-child(2) {
+  text-align: left;
+}
+
+#nurses-list td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Style pour la colonne Solde Dû */
+#nurses-list .balance-due {
+  text-align: right;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.1em;
+}
+
+/* Style pour le pied de page du tableau */
+#nurses-list tfoot tr {
+  border-top: 2px solid var(--primary-color);
+}
+#nurses-list tfoot td {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: right;
+}
+#nurses-list tfoot .total-balance {
+  color: var(--primary-color);
+  text-align: right;
+}
+
+#nurses-list button {
+  font-size: 0.9em;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+
+#nurses-list .archive-nurse-btn {
+  background-color: #ffc107;
+  color: #333;
+}
+#nurses-list .unarchive-nurse-btn {
+  background-color: #28a745;
+}
+
+/* --- Styles pour le Modal Infirmière --- */
+#nurse-modal-title {
+  margin-top: 0;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+#nurse-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px 20px;
+  align-items: center;
+}
+#nurse-form label {
+  font-weight: bold;
+  color: #555;
+  text-align: right;
+}
+#nurse-form .full-width {
+  grid-column: 1 / 0;
+}
+#nurse-form button[type="submit"] {
+  grid-column: 2 / 3;
+  justify-self: end;
+  width: 150px;
+  margin-top: 10px;
+}
+
+/* --- Styles pour le Modal Relevé de Compte --- */
+.modal-content.ledger-content {
+  max-width: 800px;
+  margin: 5% auto;
+}
+
+.ledger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.ledger-header h2 {
+  margin: 0;
+  color: var(--primary-color);
+  border: none;
+  padding: 0;
+}
+.ledger-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ledger-controls label {
+  font-weight: bold;
+}
+#ledger-year-selector {
+  width: 100px;
+  font-size: 1em;
+}
+
+#ledger-details table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+#ledger-details th,
+#ledger-details td {
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px;
+  text-align: left;
+}
+#ledger-details th {
+  background-color: #f2f2f2;
+}
+
+#ledger-details th:nth-child(3),
+#ledger-details td:nth-child(3),
+#ledger-details th:nth-child(4),
+#ledger-details td:nth-child(4),
+#ledger-details th:nth-child(5),
+#ledger-details td:nth-child(5) {
+  text-align: right;
+  width: 18%;
+}
+
+#ledger-details .amount {
+  text-align: right;
+  font-family: monospace;
+  font-size: 1.1em;
+}
+#ledger-details .debit {
+  color: #c0392b;
+}
+#ledger-details .credit {
+  color: #27ae60;
+}
+#ledger-details .balance {
+  font-weight: bold;
+}
+
+#ledger-summary {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid var(--primary-color);
+  text-align: right;
+  font-size: 1.2em;
+}
+
+.ledger-controls #print-ledger-btn {
+  background-color: #17a2b8;
+  font-size: 0.9em;
+  padding: 6px 12px;
+}
+
+.ledger-footer-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+#add-balance-btn {
+  background-color: #6c757d;
+  font-size: 0.9em;
+  padding: 6px 12px;
+}
+
+.ledger-nurse-btn {
+  background-color: #c0392b;
+}
